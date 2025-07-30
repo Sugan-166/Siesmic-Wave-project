@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.8.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 16.889183333333335,
+    "longitude": -0.8672999999999979,
+    "pitch": 45,
+    "zoom": 2
+  },
+  "layers": [
+    {
+      "@@type": "ScatterplotLayer",
+      "data": [
+        {
+          "latitude": -33.4569,
+          "location": "Chile",
+          "longitude": -70.6506
+        },
+        {
+          "latitude": 36.2048,
+          "location": "Japan",
+          "longitude": 138.2529
+        },
+        {
+          "latitude": -0.7893,
+          "location": "Indonesia",
+          "longitude": 113.9213
+        },
+        {
+          "latitude": 36.7783,
+          "location": "California, USA",
+          "longitude": -119.4179
+        },
+        {
+          "latitude": 38.9637,
+          "location": "Turkey",
+          "longitude": 35.2433
+        },
+        {
+          "latitude": 23.6345,
+          "location": "Mexico",
+          "longitude": -102.5528
+        }
+      ],
+      "getColor": "@@=[255, 0, 0, 255]",
+      "getPosition": "@@=[longitude, latitude]",
+      "getRadius": 200000,
+      "id": "bc7bb6fc-d44c-48f7-9ac9-b6f4393a7006",
+      "pickable": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/satellite-v9",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = true;
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+            mapboxApiKey: 'YOUR_MAPBOX_ACCESS_TOKEN',
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
